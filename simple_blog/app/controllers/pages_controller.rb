@@ -1,5 +1,5 @@
-class PagesController
+class PagesController < Simplemvc::Controller
     def about
-        "HELOO HELLO"
+        render :about, name: "nash", lastname: "chikanda"
     end
 end
