@@ -1,4 +1,6 @@
 require "simple_mvc/version"
+require "simple_mvc/controller.rb"
+require "simple_mvc/utils.rb"
 
 module Simplemvc
     class Application
@@ -9,7 +11,7 @@ module Simplemvc
         def call(env)
             
             if env["PATH_INFO"] == "/"
-               return [302,{"Location"=>"/trigger_man/ages"},["there is nothing in the url"]]
+               return [302,{"Location"=>"/pages/about"},["there is nothing in the url"]]
             end
             
             if env["PATH_INFO"] == "/favicon.ico"
@@ -23,7 +25,7 @@ module Simplemvc
 
         def get_controller_class_and_action(env)
             _,controller, action = env["PATH_INFO"].split("/")
-            controller_class = controller.capitalize + "Controller"
+            controller_class = controller.to_camel_case + "Controller"
             [Object.const_get(controller_class), action]
         end
     end
