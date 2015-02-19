@@ -1,6 +1,7 @@
 require "simple_mvc/version"
 require "simple_mvc/controller.rb"
 require "simple_mvc/utils.rb"
+require "simple_mvc/dependencies.rb"
 
 module Simplemvc
     class Application
@@ -19,7 +20,7 @@ module Simplemvc
             end
 
             controller_class, action = get_controller_class_and_action(env)
-            response = controller_class.new.send(action)
+            response = controller_class.new(env).send(action)
             [200, {"content-type"=>"text/html"},[response]]
         end
 
