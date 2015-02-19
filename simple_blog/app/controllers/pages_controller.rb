@@ -4,6 +4,7 @@ class PagesController < Simplemvc::Controller
     end
 
     def tell_me
-        render :tell_me, name: params["name"]
+    	#curl http://localhost:9292/pages/tell_me?name=Freeedom\&fem=nashitude
+        render :tell_me, name: params["name"], fem: params["fem"]
     end
 end
