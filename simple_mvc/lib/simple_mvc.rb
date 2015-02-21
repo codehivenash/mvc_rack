@@ -14,14 +14,23 @@ module Simplemvc
             if env["PATH_INFO"] == "/"
                return [302,{"Location"=>"/pages/about"},["there is nothing in the url"]]
             end
-            
             if env["PATH_INFO"] == "/favicon.ico"
                return [500,[],[]]
             end
 
             controller_class, action = get_controller_class_and_action(env)
-            response = controller_class.new(env).send(action)
-            [200, {"content-type"=>"text/html"},[response]]
+
+            controller = controller_class.new(env)
+            response = controller.send(action)
+
+            if controller.get_response
+              controller.get_response
+            else
+              controller.render(action)
+              controller.get_response
+
+            #[200, {"content-type"=>"text/html"},[response]]
+            end
         end
 
         def get_controller_class_and_action(env)
