@@ -1,19 +1,12 @@
 require './config/application.rb'
 
-map "/" do
-  run HomeController.action(:index)
-end
+app = Blog::Application.new
 
-map "/pages" do
-  map "/about" do
-    run PagesController.action(:about)
-  end
-  map "/tell_me" do
-    run PagesController.action(:tell_me)
-  end
+app.route do
+  match "/", "home#index"
+  match "/:controller/:action"
 end
 
 
-
-run Blog::Application.new
+run app
 

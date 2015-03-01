@@ -1,4 +1,1 @@
-MVC_RACK
-========
-
-Hello World
+appWorld
