@@ -1,3 +1,4 @@
 source "https://rubygems.org"
 
 gem "simple_mvc", :path => "../simple_mvc"
+gem "sqlite3"
