@@ -1,0 +1,7 @@
+<h1>We are the champions</h1>
+<form action="/posts/update">
+  <input type="hidden" name="id" value="<%= post.id %>" />
+  <input type="text" name="title" value="<%= post.title %>"/>
+  <textarea type="text" name="body" value="<%= post.body %>"></textarea>
+  <button type="submit">Submit</button>
+</form>

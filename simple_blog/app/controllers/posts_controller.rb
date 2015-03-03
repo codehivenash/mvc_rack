@@ -29,4 +29,8 @@ class PostsController < Simplemvc::Controller
     
     PostMapper.new.save(@post)
   end
+
+  def delete
+    PostMapper.new.delete(params["id"])
+  end
 end

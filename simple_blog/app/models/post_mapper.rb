@@ -33,4 +33,9 @@ class PostMapper
     post.created_at = row[3]
     post
   end
+    
+  def delete (id)
+    @@db.execute("DELETE FROM posts WHERE id = ? " , id)
+  end
+
 end
