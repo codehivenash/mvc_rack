@@ -13,4 +13,20 @@ class PostsController < Simplemvc::Controller
     PostMapper.new.save(@post)
   end
 
+  def index
+    @posts = PostMapper.new.findAll
+  end
+
+  def edit
+    @post = PostMapper.new.find(params["id"]) 
+
+  end
+
+  def update
+    @post = PostMapper.new.find(params["id"])
+    @post.title = params["title"]
+    @post.body = params["body"]
+    
+    PostMapper.new.save(@post)
+  end
 end
